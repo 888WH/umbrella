@@ -1,0 +1,30 @@
+version: 1
+auto-generated: true
+indices:
+  default:
+    include:
+      - /**
+    exclude:
+      - '**/drafts/**'
+      - '**/images/**'
+      - '**/icons/**'
+      - '**/fragments/**'
+      - '**/tools/**'
+      - '**/seo/**'
+      - /footer
+      - /nav
+      - /404
+      - /login
+    target: /query-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")
+
+        

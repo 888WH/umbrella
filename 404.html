@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>404 | 888™</title>
+  <script type="text/javascript">
+    window.isErrorPage = true;
+    window.errorCode = '404';
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="404 | 888™">
+  <meta property="og:description" content="404 | 888™">
+  <script src="/scripts/aem.js" type="module"></script>
+  <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
+  <script src="/scripts/888-main.js" type="module" crossorigin="use-credentials"></script>
+  <script>
+    dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'serial' : '{{sr,}}',
+      'anid' : '{{anid,}}',
+      'flag' : '{{flag,}}',
+      'serachTerm' : '{{searchTerm,}}',
+      'lang' : '{{lang,}}',
+      'country' : '{{country,}}',
+      'mkw' : '{{mkw,}}',
+      'ftd' : '{{ftd,}}',
+      'real' : '{{real,}}',
+      'vip' : '{{vip,}}',
+      'playerStatusID' : '{{playerStatusID,}}'
+    });
+  </script>
+  <script type="module">
+    import { decorateMain, loadTemplate } from '/scripts/scripts.js';
+    window.addEventListener('load', async() => {
+      const response = await fetch('/fragments/404.plain.html');
+      if (response.ok) {
+        const main = document.querySelector('main');
+        main.classList.add('errorpage');
+        const text = await response.text();
+        main.innerHTML = text;
+        await decorateMain(main);
+        loadTemplate(document,'errorpage');
+      }
+    });
+  </script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <style>
+    main.error {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+    }
+
+    main.error .error-number {
+      width: 100%;
+    }
+
+    main.error .error-number text {
+      font-family: var(--fixed-font-family);
+    }
+  </style>
+  <link rel="stylesheet" href="/styles/lazy-styles.css">
+</head>
+
+<body>
+  <header></header>
+  <main>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

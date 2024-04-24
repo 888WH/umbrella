@@ -1,0 +1,14 @@
+@import url('../../styles/breadcrumbs.css');
+@import url('../inner-nav-fragment/inner-nav-fragment.css');
+
+aside.left-nav ul li a {
+  padding: 5px 20px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+aside.left-nav ul li a::after { display: none }
+
+.anchor.first { scroll-margin-top: 20px }
+.anchor { scroll-margin-top: -40px }
+.anchor + h2 { margin-top: 80px }
